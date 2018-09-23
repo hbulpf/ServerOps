@@ -4,4 +4,4 @@
 2. [日常维护快捷脚本](./fast_run/)
 
 ------------
-友情贡献： @[`RunAtWorld`](https://github.com/RunAtWorld)   @[`加伟`](https://github.com/RunAtWorld)   
+友情贡献： @[`RunAtWorld`](https://github.com/RunAtWorld)   @[`加伟`](https://github.com/1846263444)   
