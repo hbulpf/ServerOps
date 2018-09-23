@@ -71,5 +71,3 @@ EOM
 systemctl daemon-reload
 systemctl start vncserver@:6.service
 systemctl enable vncserver@:6.service   
-
-#yewenzhan@50416
