@@ -32,7 +32,7 @@ systemctl enable vncserver@:1.service
 #为用户 lipengfei 分配连接，对应端口5902
 su - lipengfei
 vncserver :2    #临时开启vncserver的第1连接桌面
-vncpasswd       #修改连接的用户的密码
+vncpasswd       #修改连接的用户的密码,需输入设置的密码
 cat << EOM > /etc/systemd/system/vncserver@\:2.service
 [Unit]
 Description=Remote desktop service (VNC)
@@ -49,25 +49,3 @@ EOM
 systemctl daemon-reload
 systemctl start vncserver@:2.service
 systemctl enable vncserver@:2.service   
-
-
-#为用户 lipengfei 分配连接，对应端口5902
-su - yewenzhan
-vncserver :2    #临时开启vncserver的第1连接桌面
-vncpasswd       #修改连接的用户的密码
-cat << EOM > /etc/systemd/system/vncserver@\:6.service
-[Unit]
-Description=Remote desktop service (VNC)
-After=syslog.target network.target
-[Service]
-Type=forking
-ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
-ExecStart=/usr/sbin/runuser -l yewenzhan -c "/usr/bin/vncserver %i"
-PIDFile=/home/yewenzhan/.vnc/%H%i.pid
-ExecStop=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
-[Install]
-WantedBy=multi-user.target
-EOM
-systemctl daemon-reload
-systemctl start vncserver@:6.service
-systemctl enable vncserver@:6.service   
