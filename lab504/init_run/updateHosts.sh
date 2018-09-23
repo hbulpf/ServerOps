@@ -1,3 +1,4 @@
+#!/bin/bash
 sed -i '3,$d' /etc/hosts
 cat >>/etc/hosts <<EOM
 # aws hosts

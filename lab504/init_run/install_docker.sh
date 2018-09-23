@@ -1,3 +1,4 @@
+#!/bin/bash
 #卸载旧版版本
 sudo yum remove -y docker \
 	docker-client \
