@@ -1,6 +1,7 @@
 #!/bin/bash
 yum groups install "X Window System"
-yum install gnome-classic-session gnome-terminal nautilus-open-terminal control-center liberation-mono-fonts
+# yum install gnome-classic-session gnome-terminal nautilus-open-terminal control-center liberation-mono-fonts
+yum groupinstall "KDE Plasma Workspaces"
 systemctl set-default graphical.target　　#graphical.target相当于level5，multi-user.target相当于level3
 yum install -y tigervnc-server  #安装vncserver
 
@@ -49,3 +50,5 @@ EOM
 systemctl daemon-reload
 systemctl start vncserver@:2.service
 systemctl enable vncserver@:2.service   
+
+vncserver -list   #查看启用的桌面列表
