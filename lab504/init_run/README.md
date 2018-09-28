@@ -29,6 +29,8 @@ vncpasswd
 ```
 修改自己的 vnc 密码
 
+附服务器内网ip：
+501-26 内网ip为 ：192.168.13.26
 ## 2. 服务器初始化脚本说明 （ for 运维开发）
 1. 修改hosts脚本 : [updateHosts.sh](updateHosts.sh)
 2. 增加用户: [add_users.sh](add_users.sh)  本脚本用到 [user_passwd](user_passwd), [user_passwd](user_passwd) 第一列为用户名，第二列为用户密码
