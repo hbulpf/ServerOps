@@ -21,4 +21,5 @@ rm -rf tmp list
 
 #生成repodata
 yum install -y createrepo
-createrepo -p /nfs_share/ceph/rpm-mimic/el7/x86_64
+createrepo -p /nfs_share/ceph/rpm-mimic
+createrepo -p /nfs_share/ceph/ceph-deploy
