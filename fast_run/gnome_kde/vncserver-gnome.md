@@ -73,7 +73,7 @@ systemctl enable vncserver@:2.service
 > 详细使用说明请 `cat /lib/systemd/system/`
 
 # 3. 一键启动 shell 脚本
-见文件 [install_vncserver.sh](./install_vncserver.sh)
+见文件 [install_vncserver.sh](./vncserver-gnome.sh)
 
 # 参考
 1. https://www.cnblogs.com/pipci/p/7833581.html
