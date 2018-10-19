@@ -1,4 +1,3 @@
-#!/bin/bash
 #卸载旧版版本
 sudo yum remove -y docker \
 	docker-client \
@@ -35,6 +34,9 @@ sudo usermod -aG docker $USER
 # curl -sSL http://oyh1cogl9.bkt.clouddn.com/setmirror.sh | sh -s reg-mirror.qiniu.com  #使用七牛云镜像加速
 #使用aliyun镜像加速
 if [[ ! -f /etc/docker/daemon.json ]]; then 
+    if [[ ! -d /etc/docker ]]; then 
+        mkdir -p /etc/docker
+    fi
 	touch /etc/docker/daemon.json
 fi
 cat <<EOF >>/etc/docker/daemon.json
