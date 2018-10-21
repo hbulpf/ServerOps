@@ -1,6 +1,5 @@
 #!/bin/bash
-#安装 nfs 软件包
-yum install nfs-utils -y
+yum install nfs-utils -y  #安装 nfs 软件包
 
 showmount -e 52.82.8.82   #查询远程NFS 服务端中可用的共享资源
 mkdir /nfs_mirrors   #创建挂载目录，并挂载 NFS共享目录 /sharedir
