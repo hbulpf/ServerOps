@@ -107,6 +107,11 @@ http {
 }
 ```
 
+修改完 nginx 配置文件后
+```
+nginx -t #检查nginx配置文件是否有错误
+nginx -s reload #nginx配置文件无问题，重新加载nginx配置文件
+```
 ## 常见问题
 > 遇到问题，先看访问日志 ` tail /var/log/nginx/access.log ` 和错误日志 ` tail /var/log/nginx/error.log `
 ### 1. Forbidden问题
