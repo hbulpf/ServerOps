@@ -8,6 +8,8 @@ port = 8730
 # use chroot = yes
 max connections = 4
 pid file = /var/run/rsyncd.pid
+log file = /var/log/rsyncd.log
+lock file = /var/run/rsyncd.lock
 exclude = lost+found/
 # transfer logging = yes
 # timeout = 900
@@ -27,7 +29,7 @@ exclude = lost+found/
 
 [hnbd_nfs_data]
     path = /nfs_share
-    comment = Gitlab Data Directory.
+    comment = nfs_share Data Directory.
     read only = no
     auth users = hnbdnfs
     secrets file = /etc/rsyncd/hnbd_nfs_rsyncd.pass
