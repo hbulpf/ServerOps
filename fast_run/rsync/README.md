@@ -56,20 +56,26 @@ exclude = lost+found/
 
 2. 创建密码文件，采用这种方式不能使用系统用户对客户端进行认证，所以需要创建一个密码文件，其格式为“username:password”，用户名可以和密码可以随便定义，最好不要和系统帐户一致，同时要把创建的密码文件权限设置为600。
 ```
-echo "hnbdnfs:abc123" > /etc/rsyncd/hnbd_nfs_rsyncd.pass
+echo "hnbdnfs:hnbd123456" > /etc/rsyncd/hnbd_nfs_rsyncd.pass
 chmod 600 /etc/rsyncd.passwd
+```
+服务端启动 rsync 服务并开机启动
+```
+rsync --daemon --config=/etc/rsyncd.conf   #启动服务
+echo 'rsync --daemon --config=/etc/rsyncd.conf' >> /etc/rc.d/rc.local  #设置服务开机启动
 ```
 
 3. 在客户端对数据进行同步。
 ```
-rsync -avz --progress --delete hnbdnfs@172.16.78.192::hnbd_nfs_data/ /databack/experiment/rsync  #输入密码设置的密码 abc123
+rsync -avz --progress --delete hnbdnfs@nfs.hnbdata.cn::hnbd_nfs_data/ /501_data/bak/hnbd_nfs  #输入密码设置的密码 hnbd123456
 ```
 >其中 :: 后面跟上面服务端写的模块名 hnbd_nfs_data , '/' 表示模块的根目录
 
     如果不想输密码，可以将密码写入客户端的本地，指定密码存放位置即可:
 ```
-echo "abc123" > /etc/rsyncd/hnbd_nfs_rsyncd_client.pass  # 创建客户端认证文件
-rsync -avz  --progress  --delete --password-file=/etc/rsyncd/hnbd_nfs_rsyncd_client.pass  hnbdnfs@nfs.hnbdata.cn::hnbd_nfs_data/ /databack/experiment/rsync
+echo "hnbd123456" > /etc/rsyncd/hnbd_nfs_rsyncd_client.pass  # 创建客户端认证文件
+chmod 600 /etc/rsyncd/hnbd_nfs_rsyncd_client.pass  # 设置客户端认证文件的读写权限
+rsync -avz  --progress  --delete --password-file=/etc/rsyncd/rsync -avz  --delete --password-file=/etc/rsyncd/hnbd_nfs_rsyncd_client.pass  hnbdnfs@nfs.hnbdata.cn::hnbd_nfs_data/ /501_data/bak/hnbd_nfs
 ```
 
 ## 3. 使用选项

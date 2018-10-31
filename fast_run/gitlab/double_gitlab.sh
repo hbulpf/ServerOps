@@ -4,7 +4,7 @@ vi /etc/rsyncd.conf
 
 uid = root
 gid = root
-port = 8730
+port = 873
 # use chroot = yes
 max connections = 4
 pid file = /var/run/rsyncd.pid
@@ -23,10 +23,6 @@ exclude = lost+found/
     auth users = gitlab
     secrets file = /etc/rsyncd/gitlab_rsyncd.pass
 
-# [ftp]
-#        path = /home/ftp
-#        comment = ftp export area
-
 [hnbd_nfs_data]
     path = /nfs_share
     comment = nfs_share Data Directory.
@@ -36,17 +32,24 @@ exclude = lost+found/
 
 mkdir /etc/rsyncd  # 创建存放密码认证文件目录
 echo "gitlab:123456" > /etc/rsyncd/gitlab_rsyncd.pass  # 创建服务端认证文件
+chmod 600 /etc/rsyncd/gitlab_rsyncd.pass 
+
 echo "123456" > /etc/rsyncd/gitlab_client.pass  # 创建客户端认证文件
+chmod 600 /etc/rsyncd/gitlab_client.pass 
+
 
 
 mkdir /etc/rsyncd  # 创建存放密码认证文件目录
 echo "hnbdnfs:hnbd123456" > /etc/rsyncd/hnbd_nfs_rsyncd.pass  # 创建服务端认证文件
+chmod 600 /etc/rsyncd/hnbd_nfs_rsyncd.pass
 
 echo "hnbd123456" > /etc/rsyncd/hnbd_nfs_rsyncd_client.pass  # 创建客户端认证文件
-
+chmod 600 /etc/rsyncd/hnbd_nfs_rsyncd_client.pass
 
 systemctl restart rsyncd.service
 systemctl enable rsyncd.service
 
 #客户端
-rsync -avz  --delete --password-file=/etc/rsyncd/hnbd_nfs_rsyncd_client.pass  hnbdnfs@nfs.hnbdata.cn::hnbd_nfs_data/ /501_data/bak/hnbd_nfs
+rsync -avz  --progress  --delete --password-file=/etc/rsyncd/gitlab_client.pass  gitlab@git.hnbdata.cn::gitlab_data/ /var/opt/gitlab/
+
+rsync -avz  --progress  --delete --password-file=/etc/rsyncd/hnbd_nfs_rsyncd_client.pass  hnbdnfs@nfs.hnbdata.cn::hnbd_nfs_data/ /501_data/bak/hnbd_nfs
