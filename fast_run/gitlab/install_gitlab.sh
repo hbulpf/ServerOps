@@ -1,4 +1,15 @@
 #!/bin/bash
+
+# 如果内存不够，创建虚拟内存
+dd if=/dev/zero of=/swap bs=1024 count=2048000  #创建一个2G的虚拟内存
+mkswap /swap  2048000 #创建swap分区
+swapon /swap
+free -m  #或者swapon -s,查看虚拟内存信息
+#设定虚拟内存开机自动挂载
+cat <<EOF >>/etc/fstab  
+/swap       swap    swap    defaults      0       0
+EOF
+
 # 预备工作
 yum install -y curl policycoreutils-python  openssh-server openssh-clients 
 systemctl enable sshd
@@ -13,16 +24,6 @@ systemctl reload firewalld
 # 安装gitlab
 yum install -y https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-11.3.0-ce.0.el7.x86_64.rpm
 gitlab-ctl reconfigure
-
-# 如果内存不够，创建虚拟内存
-dd if=/dev/zero of=/swap bs=1024 count=2048000  #创建一个2G的虚拟内存
-mkswap /swap  2048000 #创建swap分区
-swapon /swap
-free -m  #或者swapon -s,查看虚拟内存信息
-#设定虚拟内存开机自动挂载
-cat <<EOF >>/etc/fstab  
-/swap       swap    swap    defaults      0       0
-EOF
 
 # vi  /etc/gitlab/gitlab.rb #在配置文件中修改端口
 # unicorn['port'] = 8080 改为 unicorn['port'] = 10000

@@ -1,6 +1,7 @@
 # GitLab 使用与维护
 ## 1. 安装 GitLab
-[GitLab安装脚本](./install_gitlab.sh)
+1. [脚本方式 gitlab-ce:11.3.0-ce.0](./install_gitlab.sh)
+2. [docker 容器方式安装 gitlab-ce:11.3.0-ce.0](gitlab_docker.sh)
 
 ## 2. GitLab 备份与恢复
 ### Gitlab 数据备份与恢复
