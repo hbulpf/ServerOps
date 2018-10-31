@@ -1,3 +1,18 @@
+# ps
+1. 杀掉包含 'gitlab' 关键词的所有进程
+```
+ps -ef| grep gitlab |grep -v grep|cut -c 9-15|xargs kill -9
+```
+也可以使用
+```
+ps -aux|grep gitlab|grep -v grep |awk '{print $1}'|xargs kill -9
+```
+> grep gitlab 是找出含有 gitlab 的进程
+> grep -v grep 是去掉 grep 本身
+> cut -c 9-15 是截取 9-15 位的字符， awk '{print $1}' 是打印出索引为 1 的参数，都是取 pid
+> xargs kill -9 是将前面的 pid 作为参数传进来杀死
+
+# sed
 #### 1. 增删注释   
 输出原文件为：
 ```

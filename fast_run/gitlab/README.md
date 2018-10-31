@@ -8,21 +8,21 @@
 ```
 gitlab-rake gitlab:backup:create
 ```
-使用以上命令会在 `/var/opt/gitlab/`backups目录下创建一个名称类似为 `1540817160_2018_10_29_11.3.0_gitlab_backup.tar` 的压缩包, 这个压缩包就是Gitlab整个的完整部分 , 其中开头的 `1540817160_2018_10_29_11.3.0`是备份创建的日期.
+使用以上命令会在 `/var/opt/gitlab/backups` 目录下创建一个名称类似为 `1540817160_2018_10_29_11.3.0_gitlab_backup.tar` 的压缩包, 这个压缩包就是Gitlab整个的完整部分 , 其中开头的 `1540817160_2018_10_29_11.3.0`是备份创建的日期.
 
 1. Gitlab 恢复
 同样, Gitlab的从备份恢复也非常简单:
 
     (1) 停止相关数据连接服务
-    ```
-    gitlab-ctl stop unicorn
-    gitlab-ctl stop sidekiq
-    ```
+```
+gitlab-ctl stop unicorn
+gitlab-ctl stop sidekiq
+```
 
     (2) 从 `1540817160_2018_10_29_11.3.0` 编号备份中恢复
-    ```
-    gitlab-rake gitlab:backup:restore BACKUP=1540817160_2018_10_29_11.3.0
-    ```
+```
+gitlab-rake gitlab:backup:restore BACKUP=1540817160_2018_10_29_11.3.0
+```
 
 1. 启动Gitlab
 ```
@@ -54,6 +54,14 @@ crontab -e
 
 ## 3. GitLab 主从同步/双活
 
+## 4. FAQ
+1. 安装过程出现 `ruby_block[supervise_redis_sleep] action run`,一直卡无法往下进行！
+解决方法:<br>
+```
+a. 按住CTRL+C强制结束
+b. 运行:    sudo systemctl restart gitlab-runsvdir
+c. 再次执行: sudo gitlab-ctl reconfigure
+```
 
 # 参考资料
 1. rsync命令 . http://man.linuxde.net/rsync 

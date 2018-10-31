@@ -3,7 +3,8 @@
 yum install -y curl policycoreutils-python  openssh-server openssh-clients 
 systemctl enable sshd
 systemctl start sshd
-yum install postfix #安装邮件服务
+#yum install https://rpmfind.net/linux/remi/enterprise/6/test/x86_64/compat-mysql55-5.5.55-1.el6.remi.x86_64.rpm
+yum install -y postfix #安装邮件服务
 systemctl enable postfix
 systemctl start postfix
 firewall-cmd --permanent --add-service=http
@@ -25,7 +26,10 @@ EOF
 
 # vi  /etc/gitlab/gitlab.rb #在配置文件中修改端口
 # unicorn['port'] = 8080 改为 unicorn['port'] = 10000
-# external_url 'http://scnu-george.cn'
+# external_url 'http://git.hnbdata.cn'
+sed -i "/^\(#[ ]\)*external_url/c\external_url \'http://git.hnbdata.cn\'" /etc/gitlab/gitlab.rb  #修改 external_url
+cat  /etc/gitlab/gitlab.rb | grep external_url  #输出 external_url确认结果正确
+# external_url 'http://git.hnbdata.cn'
 gitlab-ctl reconfigure
 gitlab-ctl restart
 
