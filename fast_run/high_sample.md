@@ -13,7 +13,7 @@ ps -aux|grep gitlab|grep -v grep |awk '{print $1}'|xargs kill -9
 > xargs kill -9 是将前面的 pid 作为参数传进来杀死
 
 # sed
-#### 1. 增删注释   
+1. 增删注释   
 输出原文件为：
 ```
 cat  zimu.txt
@@ -28,13 +28,19 @@ sed -i 's/^#\([ ]*bic\)/\1/' zimu.txt  #\1的就类似于前面的'bic'，'()'�
 sed -i 's/^[ ]*bic/#&/' zimu.txt  # '&'是匹配任意字符（就是啥都行），这条命令是替换以'bic'开头的为 '#bic'
 ```
 
-#### 2. 替换含有特定字符的某一行
+2. 替换含有特定字符的某一行
  将含有以 '#external_url' 或 空格external_url 开头的行替换为 external_url 'http://scnu-george.cn'
 ```
 sed -i "/^\(#[ ]\)*external_url/c\external_url \'http://scnu-george.cn\'" /etc/gitlab/gitlab.rb 
 ```
 
-#### 3. 在以 `root` 开头的行下面插入
+3. 在以 `root` 开头的行下面插入
 ```
 sed -i "/^root/a\\${user} ALL = (ALL:ALL) NOPASSWD:ALL" /etc/sudoers
+```
+
+4. 替换字符串
+```
+Echo "2014-08-22 01:55:11" | sed 's/-//g' | sed 's/ //g' | sed 's/://g'
+结果为：20140822015511
 ```
