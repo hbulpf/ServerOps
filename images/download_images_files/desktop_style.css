@@ -1,0 +1,61 @@
+.hctpc_ajax_wrap {
+	color: red;
+}
+.hctpc_img:hover {
+	cursor: default;
+	position: relative;
+	z-index: 10;
+	-webkit-transition: 300ms ease-in-out;
+	-moz-transition: 300ms ease-in-out;
+	-o-transition: 300ms ease-in-out;
+	transition: 300ms ease-in-out;
+}
+.hctpc_left:hover {
+	/* move to the right and increase the size of image */
+	-webkit-transform: translateX(100%) scale(3, 3);
+	-moz-transform: translateX(100%) scale(3, 3);
+	-o-transform: translateX(100%) scale(3, 3);
+	-ms-transform: translateX(100%) scale(3, 3);
+	transform: translateX(100%) scale(3, 3);
+}
+.hctpc_right:hover {
+	/* move to the left and increase the size of image */
+	-webkit-transform: translateX(-100%) scale(3, 3);
+	-moz-transform: translateX(-100%) scale(3, 3);
+	-ms-transform: translateX(-100%) scale(3, 3);
+	-o-transform: translateX(-100%) scale(3, 3);
+	transform: translateX(-100%) scale(3, 3);
+}
+.hctpc_center:hover {
+	/* increase the size of image */
+	-webkit-transform: scale(3, 3);
+	-moz-transform: scale(3, 3);
+	-o-transform: scale(3, 3);
+	-ms-transform: scale(3, 3);
+	transform: scale(3, 3);
+}
+.hctpc_reload_button:hover {
+	cursor:pointer;
+	opacity: 0.7;
+}
+.hctpc_reload_button.hctpc_active {
+	opacity: 0.7;
+	animation: hctpc_rotation 800ms infinite linear;
+	-webkit-animation: hctpc_rotation 800ms infinite linear;
+}
+@-webkit-keyframes hctpc_rotation {
+	0% {-webkit-transform: rotate(0deg);}
+	100% {-webkit-transform: rotate(359deg);}
+}
+@-moz-keyframes hctpc_rotation {
+	0% {-webkit-transform: rotate(0deg);}
+	100% {-webkit-transform: rotate(359deg);}
+}
+@-o-keyframes hctpc_rotation {
+	0% {-webkit-transform: rotate(0deg);}
+	100% {-webkit-transform: rotate(359deg);}
+}
+@keyframes hctpc_rotation {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(359deg);}
+}
