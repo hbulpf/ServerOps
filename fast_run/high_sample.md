@@ -33,9 +33,9 @@ sed -i 's/^[ ]*bic/#&/' zimu.txt  # '&'是匹配任意字符（就是啥都行�
 sed -i "/^\(#[ ]\)*external_url/c\external_url \'http://scnu-george.cn\'" /etc/gitlab/gitlab.rb 
 ```
 
-3. 在以 `root` 开头的行下面插入
+3. 在以 `root` 开头的行下面插入一行 `hadoop ALL = (ALL:ALL) NOPASSWD:ALL`
 ```
-sed -i "/^root/a\\${user} ALL = (ALL:ALL) NOPASSWD:ALL" /etc/sudoers
+sed -i "/^root/a\hadoop ALL = (ALL:ALL) NOPASSWD:ALL" /etc/sudoers
 ```
 
 4. 替换字符串
