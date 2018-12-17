@@ -33,12 +33,22 @@ sed -i 's/^[ ]*bic/#&/' zimu.txt  # '&'是匹配任意字符（就是啥都行�
 sed -i "/^\(#[ ]\)*external_url/c\external_url \'http://scnu-george.cn\'" /etc/gitlab/gitlab.rb 
 ```
 
-3. 在以 `root` 开头的行下面插入一行 `hadoop ALL = (ALL:ALL) NOPASSWD:ALL`
+3. 替换特定字符
+ + 将字符"ab"替换为特定字符"cd"
+    ```
+    sed -i "s/ab/cd/" /etc/sudoers
+    ```
+ + 将以"ETCD_ADVERTISE_CLIENT_URLS"的属性值替换为其他值
+    ```
+    sed -i 's/^ETCD_ADVERTISE_CLIENT_URLS=.*/ETCD_ADVERTISE_CLIENT_URLS=http:\/\/192.168.56.101:2379/' /etc/etcd/etcd.conf
+    ```
+
+4. 在以 `root` 开头的行下面插入一行 `hadoop ALL = (ALL:ALL) NOPASSWD:ALL`
 ```
 sed -i "/^root/a\hadoop ALL = (ALL:ALL) NOPASSWD:ALL" /etc/sudoers
 ```
 
-4. 替换字符串
+5. 替换字符串
 ```
 Echo "2014-08-22 01:55:11" | sed 's/-//g' | sed 's/ //g' | sed 's/://g'
 结果为：20140822015511
