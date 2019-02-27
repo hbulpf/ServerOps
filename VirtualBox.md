@@ -47,7 +47,7 @@ host-only(虚拟机和主机互相通信，使用 192.168.56.x 网段)
 <div align="center"><img src="./images/4.jpg" /></div>
 
 (1) 配置 host-only 网卡<br>
-编辑 ifcfg-enp0s3 文件  `vim ifcfg-enp0s3` ，配置如下
+编辑 ifcfg-enp0s8 文件  `vim ifcfg-enp0s8` ，配置如下
 
 ```
 TYPE=Ethernet
@@ -61,9 +61,9 @@ IPV6_AUTOCONF=yes
 IPV6_DEFROUTE=yes
 IPV6_FAILURE_FATAL=no
 IPV6_ADDR_GEN_MODE=stable-privacy
-NAME=enp0s3
+NAME=enp0s8
 UUID=eb9a9bdb-0621-4162-ba36-a4d1d80cb53c
-DEVICE=enp0s3
+DEVICE=enp0s8
 ONBOOT=yes
 IPADDR=192.168.56.101
 PREFIX=24
@@ -73,14 +73,14 @@ GATEWAY=192.168.56.1
 DNS1=202.116.32.254
 DNS1=202.116.32.134
 ```
-<div align="center"><img src="./images/5_1.jpg" /></div>
+<div align="center"><img src="./images/5_1.png" /></div>
 
 >**HWADDR**与仅主机网络设置中的一致
 
 保存，退出，重启网络 `service network restart` 此时宿主机和虚拟机可以相互ping通
 
 (2) 配置 Nat Network 网卡<br>
-编辑 ifcfg-enp0s8 文件  `vim ifcfg-enp0s8` ，配置如下
+编辑 ifcfg-enp0s3 文件  `vim ifcfg-enp0s3` ，配置如下
 
 ```
 TYPE=Ethernet
@@ -94,9 +94,9 @@ IPV6_AUTOCONF=yes
 IPV6_DEFROUTE=yes
 IPV6_FAILURE_FATAL=no
 IPV6_ADDR_GEN_MODE=stable-privacy
-NAME=enp0s8
+NAME=enp0s3
 UUID=eb9a9bdb-0621-4162-ba36-a4d1d80cb53f
-DEVICE=enp0s8
+DEVICE=enp0s3
 ONBOOT=yes
 HWADDR=08:00:27:24:D7:08
 ```
