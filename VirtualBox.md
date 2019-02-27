@@ -43,7 +43,7 @@ host-only(虚拟机和主机互相通信，使用 192.168.56.x 网段)
 >注意需要记下两个网卡的mac地址，后面需要在网络配置中使用到
 
 ### 2. 配置主机网卡
-开机,进入 `/etc/etc/sysconfig/network-scripts/` 目录，可以看到 `ifcfg-enp0s3` 和 `ifcfg-enp0s8` 配置文件（如果安装centos7没有选择两个网卡的话，应该只有ifcfg-enp0s3 一个配置文件,如果只有一个配置文件，则另外一个就用这个copy过来改，需要更改UUID的值），如下图：
+开机,进入 `/etc/sysconfig/network-scripts/` 目录，可以看到 `ifcfg-enp0s3` 和 `ifcfg-enp0s8` 配置文件（如果安装centos7没有选择两个网卡的话，应该只有ifcfg-enp0s3 一个配置文件,如果只有一个配置文件，则另外一个就用这个copy过来改，需要更改UUID的值），如下图：
 <div align="center"><img src="./images/4.jpg" /></div>
 
 (1) 配置 host-only 网卡<br>
