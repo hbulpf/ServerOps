@@ -16,8 +16,8 @@ sudo cat << EOM > /etc/shadowsocks.json
 		"5042": "50422018",
         "5043": "50432018"
     },
-    "timeout": 600,
-    "method": "rc4-md5"
+    "timeout": 300,
+    "method": "aes-256-cfb"
 }
 EOM
 
