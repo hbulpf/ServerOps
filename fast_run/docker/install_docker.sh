@@ -58,3 +58,10 @@ EOF
 #启动docker并加入开机启动
 systemctl start docker
 systemctl enable docker
+
+#开启网络转发
+echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
+#重启网络服务，让配置生效
+systemctl restart network 
+#查看是否成功,如果返回为“net.ipv4.ip_forward = 1”则表示成功
+sysctl net.ipv4.ip_forward
