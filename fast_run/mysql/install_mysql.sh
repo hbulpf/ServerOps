@@ -14,3 +14,4 @@ mysql -uroot -p     # 回车后会提示输入密码上面显示的密码
 # set global validate_password_length=1;
 # ALTER USER 'root'@'localhost' IDENTIFIED BY '数据库密码';
 # grant all on *.* to root@'%' identified by '数据库密码';
+# grant all privileges on *.* to 'root'@'%' with grant option;  
