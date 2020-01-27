@@ -1,0 +1,2 @@
+
+50 3 * * * rsync -avz --delete --log-file=/var/log/rsync/nas /data/ /501_data/25_data/

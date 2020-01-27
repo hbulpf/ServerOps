@@ -1,0 +1,10 @@
+30 2 * * * rsync -avz  --progress  --delete --password-file=/etc/rsyncd/hnbd_nfs_rsyncd_client.pass  hnbdnfs@nfs.hnbdata.cn::hnbd_nfs_data/ /501_data/bak/hnbd_nfs
+0 3 * * * rsync -avz  --progress  --delete --password-file=/etc/rsyncd/gitlab_client.pass  gitlab@git.hnbdata.cn::gitlab_data/backups/ /bak/gitlab/backups/
+30 4 * * * /cron_script/gitlab_recover.sh
+10 3 * * * rsync -avz --delete --log-file=/var/log/rsync/dev --password-file=/etc/rsyncd/hnbd_mysql_dev_rsyncd_client.pass  hnbdmysqldev@132.232.42.144::hnbd_mysql_dev_data/ /bak/hnbd/dbsync/dev
+20 3 * * * rsync -avz --delete --log-file=/var/log/rsync/rc --password-file=/etc/rsyncd/hnbd_mysql_rc_rsyncd_client.pass  hnbdmysqlrc@120.25.65.207::hnbd_mysql_rc_data/ /bak/hnbd/dbsync/rc
+30 3 * * * rsync -avz --delete --log-file=/var/log/rsync/test --password-file=/etc/rsyncd/hnbd_mysql_test_rsyncd_client.pass  hnbdmysqltest@134.175.6.153::hnbd_mysql_test_data/ /bak/hnbd/dbsync/test
+40 3 * * * rsync -avz --delete --log-file=/var/log/rsync/nas /bak/hnbd/dbsync/ /501_data/hnbd/
+50 3 * * * rsync -avz --delete --log-file=/var/log/rsync/nas /data/ /501_data/26_data/
+
+

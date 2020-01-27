@@ -1,0 +1,6 @@
+{
+    "registry-mirrors": ["https://hub-mirror.c.163.com", "https://docker.mirrors.ustc.edu.cn","https://po68u8ag.mirror.aliyuncs.com"],
+    "max-concurrent-downloads": 20,
+    "insecure-registries":["192.168.56.1:5000","202.116.46.215:5000","202.116.46.215"],
+    "dns": ["202.116.32.254", "202.116.32.134"]
+}
