@@ -1,6 +1,6 @@
 # 安装Anaconda python 3.7要使用python3.6
 ```bash 
-conda create -n py36 python=3.6 anaconda  #建立python3.6的虚拟环境，并将虚拟环境命名为py36
+conda create -n py36 python=3.6 #建立python3.6的虚拟环境，并将虚拟环境命名为py36
 # To activate this environment, use:
 # > source activate py36
 #

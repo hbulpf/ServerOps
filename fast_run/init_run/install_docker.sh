@@ -16,9 +16,7 @@ sudo yum install -y yum-utils \
 	lvm2	
 
 #使用国内安装源
-sudo yum-config-manager \
-	--add-repo \
-	https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
+sudo yum-config-manager --add-repo https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
 
 sudo yum-config-manager --enable docker-ce-edge
 
