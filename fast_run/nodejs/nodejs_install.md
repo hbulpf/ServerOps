@@ -12,46 +12,37 @@ yum install gcc gcc-c++
 ## 一、方式一
 
 ```
-wget https://npm.taobao.org/mirrors/node/v10.14.1/node-v10.14.1-linux-x64.tar.gz
+wget https://npm.taobao.org/mirrors/node/v10.16.0/node-v10.16.0-linux-x64.tar.gz #针对 x86_64架构
+# wget https://npm.taobao.org/mirrors/node/v10.16.0/node-v10.16.0-linux-arm64.tar.gz #针对 arm64架构
 ```
 然后执行下面命令
 
 ```
-tar -xvf  node-v8.0.0-linux-x64.tar.xz
-mv node-v8.1.4-linux-x64 node
+tar -xvf  node-v10.16.0-linux-x64.tar.gz
+mv node-v10.16.0-linux-x64 /opt/nodejs
 ```
-配置环境变量
+
+创建软连接变量
 
 ```
-vim /etc/profile
+ln -s /opt/nodejs/bin/npm   /usr/local/bin/ 
+ln -s /opt/nodejs/bin/node   /usr/local/bin/
+ln -s /opt/nodejs/bin/npx   /usr/local/bin/
 ```
-在文件中添加，目录写自己的实际目录
 
-```
-#set for nodejs  
-export NODE_HOME=/usr/local/node  
-export PATH=$NODE_HOME/bin:$PATH
-```
-生效配置文件
-
-```
-source /etc/profile
-node -v
-npm -v
-```
 
 ## 二、方式二 源码安装
 > make很浪费时间,但可以体验编译的乐趣
 
 ```
-wget https://npm.taobao.org/mirrors/node/v10.13.0/node-v10.13.0.tar.gz
+wget https://npm.taobao.org/mirrors/node/v10.16.0/node-v10.16.0.tar.gz
 ```
 
 解压安装
 
 ```
-tar xvf node-v10.13.0.tar.gz
-cd node-v10.13.0/
+tar xvf node-v10.16.0.tar.gz
+cd node-v10.16.0/
 ./configure
 make   #这个操作可能会很久
 make install
