@@ -3,6 +3,8 @@
 ## nginx 配置详解
 nginx 配置文件默认路径为 `/etc/nginx/nginx.conf`
 
+nginx 静态文件默认路径为 `/usr/share/nginx/html`
+
 ```
 user root;   #nginx的启动用户
 worker_processes auto;

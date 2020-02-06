@@ -2,6 +2,9 @@
 
 # 常见问题
 > 遇到问题，先看日志 ` tail /var/log/httpd/error_log `
+httpd 服务的默认静态文件路径 `/var/www/html/`
+
+
 ### 1. Forbidden问题
   访问时总是出现 `Forbidden错误`,原因可能有多种，但常见的解决方法有
   1. 关闭Selinux 
