@@ -1,7 +1,7 @@
 #!/bin/bash
-yum -y install http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm  #安装 Yum Repository
 yum -y remove mariadb* #为防止和mariadb出现冲突，卸载mariadb相关
 yum -y remove mysql*
+yum -y install http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm  #安装 Yum Repository
 yum -y install mysql-community-server #使用yum安装MySQL
 yum -y remove mysql57-community-release-el7-10.noarch #每次yum操作都会自动更新，需要把rpm卸载掉
 
