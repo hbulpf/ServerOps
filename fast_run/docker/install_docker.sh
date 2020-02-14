@@ -41,7 +41,14 @@ if [[ ! -f /etc/docker/daemon.json ]]; then
 fi
 cat <<EOF >>/etc/docker/daemon.json
 {
-  "registry-mirrors": ["https://po68u8ag.mirror.aliyuncs.com"]
+  "registry-mirrors": ["https://po68u8ag.mirror.aliyuncs.com",
+    "https://docker.mirrors.ustc.edu.cn",
+    "http://hub-mirror.c.163.com",
+    "https://dockerhub.azk8s.cn",
+    "https://mirror.ccs.tencentyun.com",
+	"https://registry.docker-cn.com"
+	],
+	"experimental":true
 }
 EOF
 #使用docker-cn镜像加速
