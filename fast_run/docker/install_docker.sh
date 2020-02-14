@@ -1,24 +1,11 @@
-#卸载旧版版本
-sudo yum remove -y docker \
-	docker-client \
-	docker-client-latest \
-	docker-common \
-	docker-latest \
-	docker-latest-logrotate \
-	docker-logrotate \
-	docker-selinux \
-	docker-engine-selinux \
-	docker-engine
+﻿#卸载旧版版本
+sudo yum remove -y docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine
 
 # 安装依赖
-sudo yum install -y yum-utils \
-	device-mapper-persistent-data \
-	lvm2	
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2	
 
 #使用国内安装源
-sudo yum-config-manager \
-	--add-repo \
-	https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
+sudo yum-config-manager --add-repo https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
 
 sudo yum-config-manager --enable docker-ce-edge
 
