@@ -1,0 +1,63 @@
+        
+        location ^~/py36 {
+        proxy_set_header Host $host;
+        proxy_set_header  X-Real-IP        $remote_addr;
+        proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_pass http://127.0.0.1:8889/;
+        }
+
+        location /py36 {
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
+            proxy_set_header Host $http_host;
+            proxy_set_header X-Nginx-Proxy true;
+            proxy_pass http://127.0.0.1:8889;
+            proxy_redirect off;
+        }
+
+
+        # 反向代理到 8080 端口     
+        location ^~/py36 {
+             proxy_pass http://127.0.0.1:8889;      
+             add_header Access-Control-Allow-Origin *; 
+        }
+
+        location ^~/sci/ {
+                rewrite ^/sci/(.*)$ http://iot.hnbdata.cn:81/ break;
+        }
+
+        location ^~/py/ {
+                rewrite ^/py/(.*)$ http://iot.hnbdata.cn:8889/ break;
+        }
+
+
+        location ^~/py/ {
+            if ($request_uri~ /py/(.*)) {
+                set $bucketid $1;
+            }
+            proxy_pass http://127.0.0.1:81;
+        }
+
+        location /py {
+            proxy_pass http://127.0.0.1:81;
+        }
+
+
+    location /py {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Nginx-Proxy true;
+        proxy_pass http://127.0.0.1:81;
+        proxy_redirect off;
+    }
+
+
+    server {
+        listen       8889 ;
+        server_name  py.iot.hnbdata.cn;
+        location /py {
+            proxy_pass http://127.0.0.1:8889;      
+        }
+    }

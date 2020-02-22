@@ -114,8 +114,46 @@ http {
 nginx -t #检查nginx配置文件是否有错误
 nginx -s reload #nginx配置文件无问题，重新加载nginx配置文件
 ```
+
+
+## 端口转发
+在nginx.conf添加如下配置，并使用 `nginx -s reload` 重载nginx使其生效，同时注意防火墙/安全组放行对应的端口。
+
+stream {
+    #将12345端口转发到192.168.1.23的3306端口
+    server {
+        listen 12345;
+        proxy_connect_timeout 5s;
+        proxy_timeout 20s;
+        proxy_pass 192.168.1.23:3306;
+    }
+    #将udp 53端口转发到192.168.1.23 53端口
+    server {
+        listen 53 udp reuseport;
+        proxy_timeout 20s;
+        proxy_pass 192.168.1.23:53;
+    }
+    #ipv4转发到ipv6
+    server {
+        listen 9135;
+        proxy_connect_timeout 10s;
+        proxy_timeout 30s;
+        proxy_pass [2607:fcd0:107:3cc::1]:9135;
+    }
+}
+
+* listen：后面填写源端口（也就是当前服务器端口），默认协议为TCP，可以指定为UDP协议
+* proxy_connect_timeout：连接超时时间
+* proxy_timeout：超时时间
+* proxy_pass：填写转发目标的IP及端口号
+  
+注意：nginx可以将IPV4的数据包转发到IPV6，IPV6的IP需要使用[]括起来。
+
+
 ## 常见问题
 > 遇到问题，先看访问日志 ` tail /var/log/nginx/access.log ` 和错误日志 ` tail /var/log/nginx/error.log `
+
+
 ### 1. Forbidden问题
   访问时总是出现 `Forbidden错误`,原因可能有多种，但常见的解决方法有
   1. 关闭Selinux 
