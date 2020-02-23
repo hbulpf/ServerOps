@@ -26,8 +26,8 @@ docker run \
   -p 8081:8080 \
   -p 50000:50000 \
   -v /data/jenkins/jenkins_home:/var/jenkins_home \
-  -v /data/jenkins/run/docker.sock:/var/run/docker.sock \
-  -v /jenkins/home:/home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /jenkins/user_home:/home \
   jenkinsci/blueocean
 ```
 # 插件
@@ -68,11 +68,29 @@ docker run \
   -d \
   -p 8081:8080 \
   -v /data/jenkins/jenkins_home:/var/jenkins_home \
-  -v /data/jenkins/run/docker.sock:/var/run/docker.sock \
-  -v /jenkins/home:/home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /jenkins/ususer_homeerhome:/home \
   jenkinsci/blueocean
 ```
 
+
+# FAQ
+
+#### Jenkins在shell脚本运行docker权限报错解决
+
+报错
+```
+docker: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post http://%2Fvar%2Frun%2Fdocker.sock/v1.38/containers/create?name=my-node-8: dial unix /var/run/docker.sock: connect: permission denied.
+```
+
+解决方法:
+
+将jenkins用户加入docker组，重启Jenkins服务
+
+```
+sudo gpasswd -a jenkins docker
+sudo service jenkins restart
+```
 
 
 # 参考

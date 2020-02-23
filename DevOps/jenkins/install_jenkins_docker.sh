@@ -6,6 +6,6 @@ docker run \
   -d \
   -p 8081:8080 \
   -v /data/jenkins/jenkins_home:/var/jenkins_home \
-  -v /data/jenkins/run/docker.sock:/var/run/docker.sock \
-  -v /jenkins/home:/home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /jenkins/user_home:/home \
   jenkinsci/blueocean
