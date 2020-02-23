@@ -1,5 +1,8 @@
-**Tomcat 服务器**
+# Tomcat 服务器
 
+## 安装
+
+### [yum 安装](./install_tomcat.sh)
 1. 安装 tomcat
     ```
     yum -y install tomcat tomcat-webapps tomcat-admin-webapps tomcat-docs-webapp tomcat-javadoc
@@ -25,3 +28,13 @@
     ```
     rpm -ql tomcat | cat -n
     ```
+
+### [docker 安装](./install_tomcat_docker.sh)
+
+```
+docker pull tomcat:8.5.51-jdk8-adoptopenjdk-hotspot
+docker run --name=tomcat -d -p 8080:8080 \ 
+    --restart=always
+    -v /data/tomcat:/usr/local/tomcat  
+    tomcat:8.5.51-jdk8-adoptopenjdk-hotspot
+```
