@@ -10,6 +10,12 @@
 
 ## war 方式
 
+1. 将[最新的稳定Jenkins WAR包](http://mirrors.jenkins.io/war-stable/latest/jenkins.war) 下载到您计算机上的相应目录。
+1. 在下载的目录内打开一个终端/命令提示符窗口到。
+2. 运行命令java -jar jenkins.war
+3. 浏览http://localhost:8080并等到*Unlock Jenkins*页面出现。
+4. [进行后续步骤](https://jenkins.io/zh/doc/book/installing/#setup-wizard)。
+
 ## [Docker 方式](./install_jenkins_docker.sh)
 
 ```
