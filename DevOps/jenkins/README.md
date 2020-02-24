@@ -92,8 +92,14 @@ sudo gpasswd -a jenkins docker
 sudo service jenkins restart
 ```
 
+m : a24f2620069ea4d52aebec0ceb86c933 
 
 # 参考
 1. devops-jenkins部署和基本使用 . https://www.cnblogs.com/scajy/p/11806780.html
 1. (官方)安装Jenkins . https://jenkins.io/zh/doc/book/installing/
 2. (官方)使用Maven构建Java应用程序 . https://jenkins.io/zh/doc/tutorials/build-a-java-app-with-maven/
+3. w3cschool-Jenkins . https://www.w3cschool.cn/jenkins/jenkins-5h3228n2.html
+4. Jenkins+Github持续集成 . https://www.cnblogs.com/itrena/p/9205108.html
+5. 【Jenkins 插件】使用 github 插件从 GitHub 上拉取项目代码 . https://tendcode.com/article/jenkins_link_github/
+6. Jenkins 中文社区 . http://jenkins-zh.cn/tutorial/
+7. github plugin . https://plugins.jenkins.io/github/
