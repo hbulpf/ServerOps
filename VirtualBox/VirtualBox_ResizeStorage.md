@@ -1,4 +1,4 @@
-# VirtualBox给虚拟机硬盘扩容
+# VirtualBox虚拟机硬盘扩容
 ### 1. 在宿主机下增加 VDI 文件大小,要先将该虚拟机关机
 ```
 VBoxManage modifyhd  centos_102.vdi  --resize 100000 #增加centos_102.vdi ,单位是M,即扩展到100000M

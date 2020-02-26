@@ -12,7 +12,7 @@
 ### 步骤
 #### 1. 创建Nat Network 虚拟网卡
 **文件(File) -> 偏好设定(Preferences)-> 网络(Network)** 如下图<br>
-<div align="center"><img src="./images/2.jpg" width="32%" /></div>
+<div align="center"><img src="images/2.jpg" width="32%" /></div>
 
 >**提示：<br>
 >1.这里采用网络地址转换（NAT）模式，是为虚拟机配置一个上网的网卡。<br>
@@ -20,7 +20,7 @@
 
 #### 2. 创建仅主机虚拟网卡 
 *文件(File) -> 仅主机网络管理((Host Network Manager)** (或者使用快捷键 `Ctrl + W`)，添加一个 仅主机模式的网卡，设置如下图 <br>
-<div align="center"><img src="./images/1.jpg" width="45%" /></div>
+<div align="center"><img src="images/1.jpg" width="45%" /></div>
 
 >**提示：<br>
 >1.对虚拟机网络设置，需要先关闭虚拟机;<br>
@@ -37,14 +37,14 @@ nat(虚拟机访问互联网，使用 10.0.2.x 网段)
 host-only(虚拟机和主机互相通信，使用 192.168.56.x 网段)
 在偏好设置里面设置网络。如下图配置：
 ```
-<div align="center"><img src="./images/3_1.jpg" /></div>
-<div align="center"><img src="./images/3_2.jpg" /></div>
+<div align="center"><img src="images/3_1.jpg" /></div>
+<div align="center"><img src="images/3_2.jpg" /></div>
 
 >注意需要记下两个网卡的mac地址，后面需要在网络配置中使用到
 
 ### 2. 配置主机网卡
 开机,进入 `/etc/sysconfig/network-scripts/` 目录，可以看到 `ifcfg-enp0s3` 和 `ifcfg-enp0s8` 配置文件（如果安装centos7没有选择两个网卡的话，应该只有ifcfg-enp0s3 一个配置文件,如果只有一个配置文件，则另外一个就用这个copy过来改，需要更改UUID的值），如下图：
-<div align="center"><img src="./images/4.jpg" /></div>
+<div align="center"><img src="images/4.jpg" /></div>
 
 (1) 配置 host-only 网卡<br>
 编辑 ifcfg-enp0s8 文件  `vim ifcfg-enp0s8` ，配置如下
@@ -73,7 +73,7 @@ GATEWAY=192.168.56.1
 DNS1=202.116.32.254
 DNS1=202.116.32.134
 ```
-<div align="center"><img src="./images/5_1.png" /></div>
+<div align="center"><img src="images/5_1.png" /></div>
 
 >**HWADDR**与仅主机网络设置中的一致
 
@@ -100,7 +100,7 @@ DEVICE=enp0s3
 ONBOOT=yes
 HWADDR=08:00:27:24:D7:08
 ```
-<div align="center"><img src="./images/5_2.png" /></div>
+<div align="center"><img src="images/5_2.png" /></div>
 
 >1.将ONBOOT=no 改为 yes (最开始默认为NO，yes意思是，"BOOT开机"时就能使用这张网卡),再添加BOOTPROTO为dhcp（只有“静态static”和“动态dhcp”两种方式）<br>
 >2.**HWADDR**与仅NAT网络设置中的一致<br>
