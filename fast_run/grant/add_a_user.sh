@@ -1,6 +1,6 @@
 #!/bin/bash
-user='chenqiren'
-key='chenqiren@504'
+user='webui'
+key='webui@sfyh'
 echo "create user [$user]"
 useradd -d /home/$user -m $user
 echo $key | passwd --stdin $user

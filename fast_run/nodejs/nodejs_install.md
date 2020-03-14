@@ -9,7 +9,7 @@
 yum install gcc gcc-c++
 ```
 
-## 一、方式一
+## 1.1 方式一
 
 ```
 wget https://npm.taobao.org/mirrors/node/v10.16.0/node-v10.16.0-linux-x64.tar.gz #针对 x86_64架构
@@ -30,8 +30,27 @@ ln -s /opt/nodejs/bin/node   /usr/local/bin/
 ln -s /opt/nodejs/bin/npx   /usr/local/bin/
 ```
 
+## 1.2 方式二
 
-## 二、方式二 源码安装
+```
+wget https://npm.taobao.org/mirrors/node/v10.16.0/node-v10.16.0-linux-x64.tar.gz #针对 x86_64架构
+# wget https://npm.taobao.org/mirrors/node/v10.16.0/node-v10.16.0-linux-arm64.tar.gz #针对 arm64架构
+```
+然后执行下面命令
+
+```
+tar -xvf  node-v10.16.0-linux-x64.tar.gz
+mv node-v10.16.0-linux-x64 /opt/nodejs
+```
+
+加入环境变量
+
+```
+echo 'export PATH=$PATH:/opt/nodejs/bin' >> /etc/profile
+source /etc/profile
+```
+
+## 1.3 方式三:源码安装
 > make很浪费时间,但可以体验编译的乐趣
 
 ```
