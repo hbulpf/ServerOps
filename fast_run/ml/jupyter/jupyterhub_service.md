@@ -1,4 +1,5 @@
-# 启动Jupyterhub 服务
+# 安装启动Jupyterhub 服务
+
 1. 下载安装[anaconda](https://repo.anaconda.com/archive/)，并生效环境变量
     如果已经安装了anaconda，执行生效环境变量并激活py36环境：
     ```
@@ -47,6 +48,21 @@
     - [安装 tensorflow](../tesorflow/)
     - [安装 pytorch](../pytorch/)
     - [个人账号开启 jupyter](./jupyter_service.md)
+	
+# 其他方式安装
+
+jupyterhub 代码地址：https://github.com/jupyterhub/jupyterhub
+
+```
+apt-get install npm nodejs-legacy
+npm install -g conda
+conda install -c conda-forge jupyterhub
+conda install notebook
+conda install jupyterlab
+npm install -g configurable-http-proxy
+pip install jupyterhub 
+```
+
 
 # 参考
 1. http://www.mamicode.com/info-detail-2309029.html
