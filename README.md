@@ -6,5 +6,12 @@
 2. [DevOps 实践](./DevOps/README.md)
 3. [VirtualBox实践](./VirtualBox/README.md)
 
-------------
-友情贡献： @[`RunAtWorld`](https://github.com/RunAtWorld)   @[`加伟`](https://github.com/1846263444)   
+----------------------------------------
+
+**项目规范**
+
+本文使用 [`Markdown`](https://www.markdownguide.org/basic-syntax) 编写, 排版符合[`中文技术文档写作规范`](https://github.com/hbulpf/document-style-guide)。Find Me On [**Github**](https://github.com/hbulpf/ServerOps) , [**Gitee**](https://gitee.com/sifangcloud/ServerOps)
+
+**友情贡献**
+
+@[**RunAtWorld**](http://www.github.com/RunAtWorld)  &nbsp;  [**Clock966**](https://github.com/Clock966)  &nbsp;  @[**persuez**](https://github.com/persuez)
