@@ -21,3 +21,7 @@
 **友情贡献**
 
 @[**RunAtWorld**](http://www.github.com/RunAtWorld)  &nbsp;  [**Clock966**](https://github.com/Clock966)  &nbsp;  @[**persuez**](https://github.com/persuez)
+
+#### 关注公众号 『四方云和』 获取更多优质文章 ~
+
+![sfyh_qrcode](sfyh_qrcode.jpg)
