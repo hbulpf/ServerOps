@@ -8,6 +8,7 @@ yum -y remove mysql57-community-release-el7-10.noarch #每次yum操作都会自�
 # 上述安装较慢时，应当使用清华大学的源
 
 systemctl start  mysqld.service
+systemctl enable mysqld.service
 systemctl status mysqld.service
 grep "password" /var/log/mysqld.log
 mysql -uroot -p     # 回车后会提示输入密码上面显示的密码
