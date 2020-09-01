@@ -90,7 +90,7 @@ webhook.js  代码
 ```
 var http = require('http')
 var createHandler = require('gitee-webhook-handler')
-var handler = createHandler({ path: '/webhooks_push', secret: 'sfyh20200801' })
+var handler = createHandler({ path: '/webhooks_push', secret: '123456' })
 
 function run_cmd(cmd, args, callback) {
   var spawn = require('child_process').spawn;
