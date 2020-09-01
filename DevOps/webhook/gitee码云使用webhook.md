@@ -1,3 +1,4 @@
+# gitee码云使用webhook
 ### 原因
 
 我们经常使用GitHub、GitLab、Gitee 之类的仓库，有时候需要频繁的发布代码打包，人工发布，工作量有时候会很大，有时候还容易出错，所以会使用Jenkins一类的工具进行辅助，但是如果是一个简单的项目或者是个人项目使用Jenkins就显得太重了，可以直接使用webhook，比较方便。
@@ -83,10 +84,13 @@ npm install  gitee-webhook-handler --save # 当前的版本为v0.1.2
 
 ```bash
 vim webhook.js
+```
 
+webhook.js  代码
+```
 var http = require('http')
 var createHandler = require('gitee-webhook-handler')
-var handler = createHandler({ path: '/webhooks_push', secret: '123456' })# post 所需要用到的秘钥
+var handler = createHandler({ path: '/webhooks_push', secret: 'sfyh20200801' })
 
 function run_cmd(cmd, args, callback) {
   var spawn = require('child_process').spawn;
@@ -98,7 +102,8 @@ function run_cmd(cmd, args, callback) {
 handler.on('error', function (err) {
   console.error('Error:', err.message)
 })
-handler.on('Push Hook', function (event) {  # 这个地方就是GitHub 和 Gitee 不一样的地方，需要注意
+# 这个地方就是GitHub 和 Gitee 不一样的地方，需要注意
+handler.on('Push Hook', function (event) {  
   console.log('Received a push event for %s to %s',
     event.payload.repository.name,
     event.payload.ref);
@@ -110,14 +115,14 @@ try {
       res.statusCode = 404
       res.end('no such location')
     })
-  }).listen(6666) # 服务监听的端口，可以自行修改
+  }).listen(6698) 
+  # 服务监听的端口，可以自行修改
 }catch(err){
   console.error('Error:', err.message)
 }
 ```
 
 1. 创建需要执行的脚本
-
 
 
 ```bash
@@ -127,17 +132,15 @@ git pull xxxxx  # 根据自己的需要自行编写
 
 1. 测试服务
 
-   ![img](imgs/giteehook2.png)
+![img](imgs/giteehook2.png)
 
-   ![img](imgs/giteehook3.png)
+![img](imgs/giteehook3.png)
 
 显示ok，说明成功
 
 ### 使用pm2应用进程管理器
 
 使用node 启动服务不是很方便，推荐使用pm2
-
-
 
 ```bash
 npm install -g pm2
