@@ -115,6 +115,9 @@ nginx -t #检查nginx配置文件是否有错误
 nginx -s reload #nginx配置文件无问题，重新加载nginx配置文件
 ```
 
+## nginx配置https
+
+https://blog.csdn.net/weixin_38615720/article/details/92827012?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param
 
 ## 端口转发
 在nginx.conf添加如下配置，并使用 `nginx -s reload` 重载nginx使其生效，同时注意防火墙/安全组放行对应的端口。
